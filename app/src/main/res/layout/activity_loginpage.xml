@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="cursive"
+        android:text="@string/title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="60sp" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/background_light"
+        android:drawableStart="@drawable/mail"
+        android:ems="10"
+        android:hint="@string/email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:typeface="normal" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/background_light"
+        android:drawableStart="@drawable/lock"
+        android:ems="10"
+        android:hint="@string/password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:typeface="normal" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape"
+        android:radius="50dp"
+        android:stateListAnimator="@null"
+        android:text="@string/login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:typeface="normal" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape"
+        android:radius="50dp"
+        android:stateListAnimator="@null"
+        android:text="@string/register"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:typeface="normal" />
+
+</LinearLayout>
