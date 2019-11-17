@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Labserve</string>
+    <string name="usergreeting">Welcome, User </string>
 </resources>
