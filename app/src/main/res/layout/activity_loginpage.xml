@@ -63,6 +63,7 @@
         android:layout_marginRight="55dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/shape"
+        android:hapticFeedbackEnabled="false"
         android:radius="50dp"
         android:stateListAnimator="@null"
         android:text="@string/login"

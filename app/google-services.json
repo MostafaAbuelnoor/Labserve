@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "575934631871",
+    "firebase_url": "https://labserve-3e192.firebaseio.com",
+    "project_id": "labserve-3e192",
+    "storage_bucket": "labserve-3e192.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575934631871:android:1e548b091db7b143c99b0a",
+        "android_client_info": {
+          "package_name": "com.project.labserve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575934631871-eavu3u3jnmduvq2g6cq4a5u74ktck5cn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.labserve",
+            "certificate_hash": "87be90347f67923a7612bda6b60ee03e003dcf56"
+          }
+        },
+        {
+          "client_id": "575934631871-uoklfmaulthnm5i91n517eic9m88k5eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS_ljkK3PDASvRjpzkY4ESrmVctsG-LF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575934631871-uoklfmaulthnm5i91n517eic9m88k5eg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

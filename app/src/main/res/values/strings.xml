@@ -9,4 +9,9 @@
     <string name="reserveLab">Reserve a lab</string>
     <string name="reservationsLab">Check my reservations</string>
     <string name="title">Labserve</string>
+    <string name="name">Name</string>
+    <string name="faculty">Are you faculty</string>
+    <string name="cancel">Cancel</string>
+    <string name="signup">Register</string>
+    <string name="signing">Sign Up</string>
 </resources>
