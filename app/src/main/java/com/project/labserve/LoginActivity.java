@@ -27,10 +27,13 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_loginpage);
 
         mAuth= FirebaseAuth.getInstance();
+
         final EditText emailEditText = findViewById(R.id.emailEditText);
         final EditText passwordEditText = findViewById(R.id.passwordEditText);
         Button loginButton = findViewById(R.id.loginButton);
         Button registerButton = findViewById(R.id.registerButton);
+        Button passwordButton = findViewById(R.id.passwordButton);
+
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -40,9 +43,6 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(i);
-                }
-                else{
-                    Toast.makeText(LoginActivity.this,"Please Login",Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -85,6 +85,15 @@ public class LoginActivity extends Activity {
                 startActivity(intent);
             }
         });
+        passwordButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // Toast.makeText(getApplicationContext(), "Finding Labs", Toast.LENGTH_LONG).show();
+                final Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     @Override
     protected void onStart() {
