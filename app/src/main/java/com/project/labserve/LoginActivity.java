@@ -1,7 +1,11 @@
 package com.project.labserve;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,13 +52,19 @@ public class LoginActivity extends Activity {
         final Intent intent = getIntent();
         final String username = intent.getStringExtra("username"); // from successful registration
 
+
+        //Prompting the user to connect to the internet
+        if(!isOnline()){
+            Toast.makeText(LoginActivity.this,"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+        }
+
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
                 //db_user.setNewCurrentUser(mFirebaseUser);
-                // if user alreadty logged in
-                if( mFirebaseUser != null ){
+                // if user alreadty logged in and is connected to the internet then don't let him log in again
+                if( mFirebaseUser != null && isOnline()){
                     Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
                     // switch to MainActivity
                     Intent i = new Intent(LoginActivity.this, MainActivity.class).putExtra("username", db_user.getUserName());
@@ -75,6 +85,9 @@ public class LoginActivity extends Activity {
                 else  if(password.isEmpty()){
                     passwordEditText.setError("Please enter your password");
                     passwordEditText.requestFocus();
+                }
+                else  if(!isOnline()){ //If user tries to login with no internet connection prompt him to connect online
+                    Toast.makeText(LoginActivity.this,"Please connect to the internet", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -114,9 +127,37 @@ public class LoginActivity extends Activity {
         });
 
     } // end of OnCreate()
+
+
     @Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(!isOnline()){
+            Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAuth.signOut();
+    }
+
+    //Checking is we're online or not from https://stackoverflow.com/questions/5474089/how-to-check-currently-internet-connection-is-available-or-not-in-android
+    public boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            return true;
+        }
+        else
+            return false;
     }
 }

@@ -22,5 +22,19 @@
     <string name="reset_password">Reset Password</string>
     <string name="about">Check whether or not a lab is free and reserve a lab if you are faculty</string>
     <string name="contactUs">Contact us at b00069562@aus.edu or g00071143@aus.edu</string>
+    <string name="notfications_summary">Do you want reminders about your reservations?</string>
+    <string name="Notifications">Notifications reminder</string>
+    <string name="notification_timing">Notification Timing</string>
+    <string name="frequency_summary">When do you want to be reminded about your reservation?</string>
+    <string-array name="frequency_keys">
+        <item>5 minutes before</item>
+        <item>10 minutes before</item>
+        <item>15 minutes before</item>
+    </string-array>
+    <string-array name="frequency_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 
 </resources>

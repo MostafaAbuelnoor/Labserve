@@ -1,7 +1,10 @@
 package com.project.labserve;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +39,10 @@ public class PasswordActivity extends Activity {
 
         mAuth = FirebaseAuth.getInstance(); //Connecting our firebase authenticator
 
+        if(!isOnline()){
+            Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+        }
+
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -48,7 +55,10 @@ public class PasswordActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString(); //Convert what the user types into the edit text as string
-                if(email.isEmpty()||!email.contains("aus.edu")){ //If the email is missing or it's not an aus email don't proceed and give error message
+                if(!isOnline()){
+                    Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+                }
+                else if(email.isEmpty()||!email.contains("aus.edu")){ //If the email is missing or it's not an aus email don't proceed and give error message
                     emailEditText.setError("Please enter valid aus email");
                     emailEditText.requestFocus();
                 }
@@ -66,4 +76,24 @@ public class PasswordActivity extends Activity {
             }
         });
     }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(!isOnline()){
+            Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Checking is we're online or not from https://stackoverflow.com/questions/5474089/how-to-check-currently-internet-connection-is-available-or-not-in-android
+    public boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            return true;
+        }
+        else
+            return false;
+    }
+
 }

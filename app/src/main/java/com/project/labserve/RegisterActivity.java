@@ -1,7 +1,10 @@
 package com.project.labserve;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +51,10 @@ public class RegisterActivity extends Activity {
         db = FirebaseDatabase.getInstance();
         db_user  = new DatabaseUser(firebaseUser, db);
 
+        if(!isOnline()){
+            Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+        }
+
         // if cancel button clicked, go to Login Activity
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,16 +68,24 @@ public class RegisterActivity extends Activity {
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Convert the password and the email to strings to use them for registeration later
+                //Convert the password and the name, email and password to strings to use them for registeration later
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
+                String name = nameEditText.getText().toString();
 
-                if(email.isEmpty()||!email.contains("aus.edu")){ //ONLY accept AUS emails and give error if empty or if email isnt aus
-                    emailEditText.setError("Please enter a valid aus email address");
+                if(!isOnline()){
+                    Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+                }
+                else if(name.isEmpty()){
+                    nameEditText.setError("Please enter your name!");
+                    nameEditText.requestFocus();
+                }
+                else if(email.isEmpty()||!email.contains("aus.edu")){ //ONLY accept AUS emails and give error if empty or if email isnt aus
+                    emailEditText.setError("Please enter a valid aus email address!");
                     emailEditText.requestFocus();
                 }
                 else if(password.isEmpty()){ //Check if the user typed in a password
-                    emailEditText.setError("Please enter a password");
+                    emailEditText.setError("Please enter a password!");
                     emailEditText.requestFocus();
                 }
                 else{
@@ -105,5 +120,24 @@ public class RegisterActivity extends Activity {
             }
         });
 
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(!isOnline()){
+            Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Checking is we're online or not from https://stackoverflow.com/questions/5474089/how-to-check-currently-internet-connection-is-available-or-not-in-android
+    public boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            return true;
+        }
+        else
+            return false;
     }
 }

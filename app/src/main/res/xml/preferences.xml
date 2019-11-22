@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_remember_percent"
+        android:summary="@string/notfications_summary"
+        android:title="@string/Notifications" />
+    <ListPreference
+        android:defaultValue="2"
+        android:dialogTitle="@string/notification_timing"
+        android:entries="@array/frequency_keys"
+        android:entryValues="@array/frequency_values"
+        android:key="pref_rounding"
+        android:summary="@string/frequency_summary"
+        android:title="@string/notification_timing" />
+</PreferenceScreen>
