@@ -23,6 +23,14 @@
         <activity android:name="com.project.labserve.MainActivity" />
         <activity android:name="com.project.labserve.RegisterActivity" />
         <activity android:name="com.project.labserve.PasswordActivity" />
+        <activity
+            android:name="com.project.labserve.AboutActivity"
+            android:label="@string/menu_about"
+            android:theme="@style/DialogTheme" />
+        <activity
+            android:name="com.project.labserve.ContactActivity"
+            android:label="@string/menu_contact"
+            android:theme="@style/DialogTheme" />
     </application>
 
 </manifest>

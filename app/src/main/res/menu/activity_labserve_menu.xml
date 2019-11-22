@@ -6,9 +6,9 @@
         android:title="@string/menu_about"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_help"
+        android:id="@+id/menu_contact"
         android:icon="@android:drawable/ic_menu_help"
-        android:title="@string/menu_help"
+        android:title="@string/menu_contact"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_settings"

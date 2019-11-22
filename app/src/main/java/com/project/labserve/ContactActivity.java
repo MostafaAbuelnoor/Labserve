@@ -5,12 +5,12 @@ import android.app.Activity;
 
 import com.example.labserve.R;
 
-public class AboutActivity extends Activity {
+public class ContactActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_contact);
     }
 
 }

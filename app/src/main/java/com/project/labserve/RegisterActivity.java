@@ -19,9 +19,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends Activity {
+
     private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
+    private FirebaseDatabase db;
+    private DatabaseUser db_user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,16 +35,20 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_registration);
 
         //Initialize and connect the components
-        EditText nameEditText = findViewById(R.id.nameEditText);
+        final EditText nameEditText = findViewById(R.id.nameEditText);
         final EditText emailEditText = findViewById(R.id.emailEditText);
         final EditText passwordEditText = findViewById(R.id.passwordEditText);
-        CheckBox facultyCheckBox = findViewById(R.id.facultyCheckBox);
+        final CheckBox facultyCheckBox = findViewById(R.id.facultyCheckBox);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button registerButton= findViewById(R.id.registerButton);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        db = FirebaseDatabase.getInstance();
+        db_user  = new DatabaseUser(firebaseUser, db);
 
+        // if cancel button clicked, go to Login Activity
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -47,6 +57,7 @@ public class RegisterActivity extends Activity {
             }
         });//Go back to the login page if the user wants to login
 
+        // if register button clicked
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -70,8 +81,22 @@ public class RegisterActivity extends Activity {
                                 Toast.makeText(RegisterActivity.this,"Sign Up Unsuccessful, Please Try Again",Toast.LENGTH_SHORT).show();
                             } //If the sign up was unsuccessful we will ask user to try again
                             else {
+
+                                // set the faculty flag of database to route properly
+                                db_user.setFacultyFlag(facultyCheckBox.isChecked());
+                                //get current user, i.e. the user registering
+                                firebaseUser = mAuth.getCurrentUser();
+                                db_user.setNewCurrentUser(firebaseUser); // set to new current user
+                                // add the new user to database
+                                db_user.addNewUser(nameEditText.getText().toString(), emailEditText.getText().toString());
+
                                 Toast.makeText(RegisterActivity.this,"Account created successfully",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+
+                                // switch to login activity
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                intent.putExtra("username", db_user.getUserName()); // pass username to intent
+                                intent.putExtra("faculty", facultyCheckBox.isChecked()); // pass faculty check to intent
+                                startActivity(intent);
                             } // If the sign up is successful then go back to login page
                         }
                     });
