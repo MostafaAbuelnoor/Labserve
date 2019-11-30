@@ -50,7 +50,7 @@ public class LoginActivity extends Activity {
         Button passwordButton = findViewById(R.id.passwordButton);
 
         final Intent intent = getIntent();
-        final String username = intent.getStringExtra("username"); // from successful registration
+        //final boolean isFac = intent.getBooleanExtra("faculty", false); // from successful registration
 
 
         //Prompting the user to connect to the internet
@@ -64,10 +64,11 @@ public class LoginActivity extends Activity {
                 FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
                 //db_user.setNewCurrentUser(mFirebaseUser);
                 // if user alreadty logged in and is connected to the internet then don't let him log in again
-                if( mFirebaseUser != null && isOnline()){
-                    Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
+                if( (mFirebaseUser != null) && isOnline()){
+                    //Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
                     // switch to MainActivity
-                    Intent i = new Intent(LoginActivity.this, MainActivity.class).putExtra("username", db_user.getUserName());
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    //i.putExtra("faculty", isFac);
                     startActivity(i);
                 }
             }
@@ -98,9 +99,9 @@ public class LoginActivity extends Activity {
                             }
                             else{
                                 Intent intToHome = new Intent(LoginActivity.this,MainActivity.class);
-                                db_user.setNewCurrentUser(mAuth.getCurrentUser());
-                                String username = db_user.getUserName();
-                                intToHome.putExtra("username", username); // pass username to Main Activity
+                                //db_user.setNewCurrentUser(mAuth.getCurrentUser());
+                                //String username = db_user.getUserName();
+                                //intToHome.putExtra("faculty", isFac); // pass username to Main Activity
                                 startActivity(intToHome);
                             }
                         }

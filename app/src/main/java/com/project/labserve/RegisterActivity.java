@@ -31,6 +31,8 @@ public class RegisterActivity extends Activity {
     private FirebaseUser firebaseUser;
     private FirebaseDatabase db;
     private DatabaseUser db_user;
+    String TAG = "RegisterActivity";
+    boolean isFaculty= false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +43,6 @@ public class RegisterActivity extends Activity {
         final EditText nameEditText = findViewById(R.id.nameEditText);
         final EditText emailEditText = findViewById(R.id.emailEditText);
         final EditText passwordEditText = findViewById(R.id.passwordEditText);
-        final CheckBox facultyCheckBox = findViewById(R.id.facultyCheckBox);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button registerButton= findViewById(R.id.registerButton);
 
@@ -49,7 +50,7 @@ public class RegisterActivity extends Activity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         db = FirebaseDatabase.getInstance();
-        db_user  = new DatabaseUser(firebaseUser, db);
+        db_user  = new DatabaseUser();
 
         if(!isOnline()){
             Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
@@ -73,6 +74,7 @@ public class RegisterActivity extends Activity {
                 String password = passwordEditText.getText().toString();
                 String name = nameEditText.getText().toString();
 
+
                 if(!isOnline()){
                     Toast.makeText(getApplicationContext(),"Please connect to the internet.", Toast.LENGTH_SHORT).show();
                 }
@@ -83,6 +85,9 @@ public class RegisterActivity extends Activity {
                 else if(email.isEmpty()||!email.contains("aus.edu")){ //ONLY accept AUS emails and give error if empty or if email isnt aus
                     emailEditText.setError("Please enter a valid aus email address!");
                     emailEditText.requestFocus();
+                    if(!email.contains("0")){
+                        isFaculty = true;
+                    }
                 }
                 else if(password.isEmpty()){ //Check if the user typed in a password
                     emailEditText.setError("Please enter a password!");
@@ -98,9 +103,10 @@ public class RegisterActivity extends Activity {
                             else {
 
                                 // set the faculty flag of database to route properly
-                                db_user.setFacultyFlag(facultyCheckBox.isChecked());
+                                db_user.setFacultyFlag(isFaculty);
                                 //get current user, i.e. the user registering
                                 firebaseUser = mAuth.getCurrentUser();
+                                Log.d(TAG, "Current user is: " + firebaseUser.getEmail() + " " + firebaseUser.getUid() + " " + firebaseUser.getDisplayName());
                                 db_user.setNewCurrentUser(firebaseUser); // set to new current user
                                 // add the new user to database
                                 db_user.addNewUser(nameEditText.getText().toString(), emailEditText.getText().toString());
@@ -109,8 +115,8 @@ public class RegisterActivity extends Activity {
 
                                 // switch to login activity
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                intent.putExtra("username", db_user.getUserName()); // pass username to intent
-                                intent.putExtra("faculty", facultyCheckBox.isChecked()); // pass faculty check to intent
+                                //intent.putExtra("username", db_user.getUserName()); // pass username to intent
+                                //intent.putExtra("faculty", facultyCheckBox.isChecked()); // pass faculty check to intent
                                 startActivity(intent);
                             } // If the sign up is successful then go back to login page
                         }

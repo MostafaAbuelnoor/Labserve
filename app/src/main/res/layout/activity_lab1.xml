@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/labImageView"
+        android:layout_width="410dp"
+        android:layout_height="205dp"
+        android:background="@drawable/lab1"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/lab_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="15dp"
+        android:text="@string/lab_name"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/lab_building"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="15dp"
+        android:text="@string/lab_building"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/lab_availability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="15dp"
+        android:text="@string/lab_availability"
+        android:textColor="#00b894"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="15dp"
+        android:text="L A B  T I M I N G S  T O D A Y"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/daytimings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:lineSpacingExtra="5sp"
+        android:paddingLeft="15dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/show_on_map"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/shape2"
+        android:fontFamily="sans-serif-light"
+        android:radius="50dp"
+        android:stateListAnimator="@null"
+        android:text="Show on Map" />
+
+    <Button
+        android:id="@+id/schedule"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/shape2"
+        android:fontFamily="sans-serif-light"
+        android:radius="50dp"
+        android:stateListAnimator="@null"
+        android:text="Show Weekly Schedule" />
+
+    <Button
+        android:id="@+id/reserve"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape2"
+        android:fontFamily="sans-serif-light"
+        android:radius="50dp"
+        android:stateListAnimator="@null"
+        android:text="Reserve this Lab" />
+
+</LinearLayout>

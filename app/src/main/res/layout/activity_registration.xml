@@ -6,126 +6,143 @@
     android:hapticFeedbackEnabled="false"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/titleTextView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="cursive"
-        android:text="@string/title"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="60sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/signUpTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/signing"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" /> />
-
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:hint="@string/name"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:hint="@string/email"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:hint="@string/password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:textSize="18sp" />
-
-    <CheckBox
-        android:id="@+id/facultyCheckBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="30dp"
-        android:buttonTint="@android:color/white"
-        android:text="@string/faculty"
-        android:textColor="@android:color/white" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/cancelButton"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape"
-            android:text="@string/cancel"
-            android:radius="50dp"
-            android:stateListAnimator="@null"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:typeface="normal" />
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape"
-            android:hapticFeedbackEnabled="false"
-            android:text="@string/signup"
-            android:radius="50dp"
-            android:stateListAnimator="@null"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:typeface="normal" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="cursive"
+                android:text="@string/title"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="60sp" />
 
+            <TextView
+                android:id="@+id/signUpTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/signing"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/name"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="#2d3436"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="#2d3436"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="#2d3436"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape"
+                    android:radius="50dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/cancel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:typeface="normal" />
+
+                <Button
+                    android:id="@+id/registerButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape"
+                    android:hapticFeedbackEnabled="false"
+                    android:radius="50dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/signup"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:typeface="normal" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView><![CDATA[
+
+    />
+
+
+
+
+
+
+
+
+
+
+
+    ]]>
 </LinearLayout>
